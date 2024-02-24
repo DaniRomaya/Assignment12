@@ -53,7 +53,8 @@ public class Assignment12_PasswordValidation {
     
     public static boolean passwordSpecial(String password){
         for (char c : password.toCharArray()){
-            if(!Character.isWhitespace(c) || !Character.isDigit(c) || !Character.isLetter(c)){
+            String specialChars =  "~!@#$%^&*()-=+_";
+            if(specialChars.contains(String.valueOf(c))){
                 return true;
             }
         }
@@ -74,7 +75,7 @@ public class Assignment12_PasswordValidation {
         if(passwordSpecial(password) == true){
             requirementsmet++;
         }
-        if(requirementsmet>=3){
+        if(requirementsmet>=3 && passwordLength(password)== true){
             System.out.println("Yes, this password satisfies the requirements.");
         } else{
             System.out.println("No, this password does not satisfy all the requirements");
